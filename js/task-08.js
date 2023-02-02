@@ -6,18 +6,12 @@ function onFormSubmit(event) {
     event.preventDefault();
     const data = {};
 
-    const formData = new FormData(event.currentTarget);
-
-    formData.forEach((value, name) => {
-        if (value === '') {
-            alert(`Поле ${name} повинне бути заповнене!`);
-        }
-        else {
-            data[name] = value;
-        }
-    });
-
-    this.reset();
-
-    console.log(data);
+    if (form.elements.email.value === '' || form.elements.password.value === '') {
+        alert(`Всі поля повинні бути заповнені!`);
+    } else {
+        data.email = form.elements.email.value;
+        data.password = form.elements.password.value;
+        console.log(data);
+        this.reset();
+    }
 }
